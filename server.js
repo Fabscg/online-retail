@@ -18,9 +18,8 @@ const sess = {
   })
 };
 
-app.use(session(sess));
-
 app.use(express.json());
+app.use(session(sess));
 app.use(express.urlencoded({ extended: false }));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
