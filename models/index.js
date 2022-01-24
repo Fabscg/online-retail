@@ -1,8 +1,8 @@
 // import models
-const Product = require('../models/Product');
-const Category = require('../models/Category');
-const Tag = require('../models/Tag');
-const ProductTag = require('../models/ProductTag');
+const Product = require('./Product');
+const Category = require('./Category');
+const Tag = require('./Tag');
+const ProductTag = require('./ProductTag');
 
 
 //Create assosiations
@@ -18,13 +18,14 @@ Category.hasMany(Product, {
 
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
-  through: ProductTag,
+  through: "ProductTag",
   as: "product_tag",
   foreignKey: "product_id",
 });
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
   through: "ProductTag",
+  as: "product_tag",
   foreignKey: "tag_id",
 })
 
