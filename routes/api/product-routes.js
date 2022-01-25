@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { json } = require("express/lib/response");
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
 // The `/api/products` endpoint
@@ -8,7 +7,6 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 router.get("/", (req, res) => {
   // find all products
   Product.findAll({
-    //associate Category and Tag data
     include: [
       {
         model: Category,
@@ -16,23 +14,21 @@ router.get("/", (req, res) => {
       },
       {
         model: Tag,
-        attributes: ["tag_name"],
+        attributes: ['tag_name'],
       },
-    ],
+    ]
   })
-
-    .then((dbProductData) => res.json(dbProductData))
+    .then((tagData) => res.json(tagData))
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
-    });
+      res.status(400).json(err)
+    })
 });
 
 // get one product
 router.get("/:id", (req, res) => {
   // find a single product by its `id`
   Product.findOne({
-    //associated Category and Tag data
     where: {
       id: req.params.id,
     },
@@ -43,15 +39,15 @@ router.get("/:id", (req, res) => {
       },
       {
         model: Tag,
-        attributes: ["tag_name"],
+        attributes: ['tag_name'],
       },
-    ],
+    ]
   })
-    .then((dbProductData) => res.json(dbProductData))
+    .then((tagData) => res.json(tagData))
     .catch((err) => {
       console.log(err);
-      res.status(500).json(err);
-    });
+      res.status(400).json(err)
+    })
 });
 
 // create new product
@@ -64,7 +60,7 @@ router.post("/", (req, res) => {
   })
     .then((product) => {
       if (req.bodytagIds.length) {
-        const productTagIdArr = re.body.tagIds / map((tag_id) => {
+        const productTagIdArr = req.body.tagIds / map((tag_id) => {
           return {
             product_id: product.id,
             tag_id,
@@ -74,7 +70,7 @@ router.post("/", (req, res) => {
       }
       res.status(200).json(product)
     })
-    .then((productsTagsIds) => res.satatus(200) / json(productTagIds))
+    .then((productTagIds) => res.satatus(200) / json(productTagIds))
     .catch((err) => {
       console.log(err)
       res.status(400).json(err);
@@ -86,12 +82,20 @@ router.post("/", (req, res) => {
 // update product
 router.put("/:id", (req, res) => {
   // update product data
-  Product.update(req.body, {
-    where: {
-      id: req.params.id,
+  Product.update(
+    {
+      product_name: req.body.product_name,
+      price: req.body.price,
+      stock: req.body.stock,
+      tagIds: req.body.tagIds,
     },
-  })
-    .then((productData) => {
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })

@@ -26,7 +26,7 @@
     "MySQL2" "Sequelize" "dotenv"
 
   # Usage
-    "npm run seed" "npm start" 
+    "npm run seed" then use "npm start" or "nodemon"
 
   # Credits
   none
@@ -35,7 +35,7 @@
   [![License](https://img.shields.io/badge/License--blue.svg)](https://opensource.org/licenses/)
   
   # Test
-  npm start
+    npm start or nodemon
 
   # Questions
   _________________________________
@@ -49,5 +49,9 @@
   
 
   ## [Email](fabiscg79@gmail.com)
+
+  ## [Video Demo](https://drive.google.com/file/d/1yycZKum0Byp9rmK1T61Cs3MyLPZmItM1/view)
+
+  ## ![Image](images/insomnia-data-OR.png)
 
   

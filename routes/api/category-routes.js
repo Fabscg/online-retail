@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
     //its associated Product
     include: {
       model: Product,
-      attributes: ["id", "product_name", "price", "stock"],
+      attributes: ["product_name", "price", "stock"],
     },
   })
     .then((categoryData) => {
