@@ -52,6 +52,8 @@
 
   ## [Video Demo](https://drive.google.com/file/d/1yycZKum0Byp9rmK1T61Cs3MyLPZmItM1/view)
 
+  ## [Github URL](https://github.com/Fabskickass/online-retail)
+
   ## ![Image](images/insomnia-data-OR.png)
 
   
