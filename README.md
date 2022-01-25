@@ -6,7 +6,7 @@
 
 [Description](#Description)
 
-[Installations](#Installations)
+[Installation](#Installation)
 
 [Usage](#Usage)
 
