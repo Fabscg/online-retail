@@ -40,7 +40,7 @@
   # Questions
   _________________________________
 
-  ## If you have any further questions about this project, you can always contact me here:(Click Enter)
+  ## If you have any further questions about this project, you can always contact me here:
 
   ## Name
   Fabiola C. Gamboa
